@@ -1,0 +1,114 @@
+<!doctype html>
+<html ng-app="demo">
+<head>
+    <title>Hello AngularJS</title>
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
+    <script src="appController.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div ng-controller="Hello as $ctrl" class="modal-demo">
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-body" id="modal-body">
+            <ul>
+                <li ng-repeat="item in $ctrl.items">
+                    <a href="#" ng-click="$event.preventDefault(); $ctrl.selected.item = item">{{ item }}</a>
+                </li>
+            </ul>
+            Selected: <b>{{ $ctrl.selected.item }}</b>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="$ctrl.ok($ctrl.selected.item)">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+        </div>
+</script>
+    <script type="text/ng-template" id="stackedModal.html">
+        <div class="modal-header">
+            <h3 class="modal-title" id="modal-title-{{name}}">The {{name}} modal!</h3>
+        </div>
+        <div class="modal-body" id="modal-body-{{name}}">
+            Having multiple modals open at once is probably bad UX but it's technically possible.
+        </div>
+    </script>
+
+
+
+<label>Name: </label>
+<label>
+    <input type="text" class="btn-gradient blue mini" ng-model="yourName" ng-placeholder="Enter a name here">
+</label>
+    <label>
+<input type="button" class="btn-gradient blue mini" value="Search" ng-click="search()">
+        </label>
+    <label>
+        <input type="button" class="btn-gradient blue mini" value="+ Employee" ng-click="add()" style="position: absolute;right: 10px;
+top: 5px; width:max-content">
+    </label>
+
+    <div class="limiter">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="table100 ver1">
+                            <table>
+                                <thead style="background-color: #7fccde">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Address</th>
+                                    <th>Department</th>
+                                    <th>Skills</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody ng-if="employeeList.length>1" ng-repeat="i in employeeList">
+                                <tr>
+                                    <td>{{i.name}}</td>
+                                    <td>{{i.address}}</td>
+                                    <td>{{i.department}}</td>
+                                    <td>{{i.skills}}</td>
+                                    <td><input type="button" style="width: max-content" value="Edit" class="btn-gradient blue mini" ng-click="editDialog.open(i)"></td>
+                                    <td><input type="button" style="width: max-content"value="Delete" class="btn-gradient blue mini" ng-click="delete(i)"></td>
+                                </tr>
+                                </tbody>
+                                <tbody ng-if="!Array.isArray(employeeList)">
+                                <tr>
+                                    <td>{{employeeList.name}}</td>
+                                    <td>{{employeeList.address}}</td>
+                                    <td>{{employeeList.department}}</td>
+                                    <td>{{employeeList.skills}}</td>
+
+                                </tr>
+                                </tbody>
+
+                            </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <p id="idFooterContent"
+       ng-bind-html="res()">
+    </p>
+</div>
+</body>
+</html>
